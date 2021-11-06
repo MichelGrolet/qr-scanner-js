@@ -1,16 +1,16 @@
 import QrScanner from './assets/js/qr-scanner.min.js';
 
+const resultat = document.getElementById('qr-data');
 const erreur = document.getElementById('erreur');
 const video = document.getElementById('video');
 
 function afficherQr(resultat) {
-	info.appendChild(document.createTextNode(resultat));
-
+	resultat.textContent = resultat;
 }
 
 export default function demarrer() {
 	QrScanner.WORKER_PATH = 'assets/js/qr-scanner-worker.min.js';
-	const qrScanner = new QrScanner(video, resultat => afficherQr(erreur, resultat), error => {
+	const qrScanner = new QrScanner(video, resultat => afficherQr(resultat), error => {
 		erreur.textContent = error;
 	});
 	qrScanner.start().then(() => {
