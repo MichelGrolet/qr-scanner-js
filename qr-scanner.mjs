@@ -13,7 +13,7 @@ export default function demarrer() {
 	QrScanner.WORKER_PATH = 'assets/js/qr-scanner-worker.min.js';
 	const qrScanner = new QrScanner(video, resultat => {
 		afficherQr(resultat);
-		console.log('decoded qr code:', resultat);
+		qrScanner.stop();
 	}, error => {
 		erreur.textContent = error;
 	});
