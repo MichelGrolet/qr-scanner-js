@@ -6,6 +6,7 @@ const video = document.getElementById('video');
 
 function afficherQr(resultat) {
 	resultat.textContent = resultat;
+	console.log(resultat);
 }
 
 export default function demarrer() {
@@ -15,7 +16,6 @@ export default function demarrer() {
 	});
 	qrScanner.start().then(() => {
 		if (!QrScanner.hasCamera()) erreur.appendChild(document.createTextNode("Aucune caméra détectée."));
-
 	});
 	return qrScanner;
 }
