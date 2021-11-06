@@ -11,7 +11,10 @@ function afficherQr(resultat) {
 
 export default function demarrer() {
 	QrScanner.WORKER_PATH = 'assets/js/qr-scanner-worker.min.js';
-	const qrScanner = new QrScanner(video, resultat => afficherQr(resultat), error => {
+	const qrScanner = new QrScanner(video, resultat => {
+		afficherQr(resultat);
+		console.log('decoded qr code:', resultat);
+	}, error => {
 		erreur.textContent = error;
 	});
 	qrScanner.start().then(() => {
