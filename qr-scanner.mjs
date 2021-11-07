@@ -6,10 +6,22 @@ const video = document.getElementById('video');
 const info = document.getElementById('info');
 
 function afficherQr(resultat) {
+	let url;
 	video.remove();
 	txtQr.classList.add("qr-res");
-	txtQr.innerHTML = resultat;
-	info.innerHTML = "QR code déchiffré !\nContenu : ";
+	try {
+		url = new URL(resultat);
+	} catch (_) {}
+	if (url==null) {
+		txtQr.innerHTML = resultat;
+		info.innerHTML = "QR code déchiffré !\nContenu : ";
+	} else {
+		let a = document.createElement("a");
+		a.text = url;
+		a.href = url;
+		txtQr.appendChild(a);
+	}
+
 	console.log("Qr code : "+resultat);
 
 }
